@@ -1,0 +1,175 @@
+/* Spinner animation - cannot be easily replicated with Tailwind */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #374151;
+  border-top: 2px solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar for the new theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B5CF6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
+
+/* Focus styles for better accessibility */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* Button hover effects */
+button:hover {
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Card hover effects */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Card styles */
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card-header {
+  padding: 1.5rem 1.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Button styles */
+.btn-primary {
+  background: #8B5CF6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #7C3AED;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #6B7280;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #4B5563;
+  transform: translateY(-1px);
+}
+
+/* Input styles */
+.input, .textarea, .select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background: white;
+  color: #374151;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Error styles */
+.border-error-500 {
+  border-color: #ef4444;
+}
+
+.focus\:border-error-500:focus {
+  border-color: #ef4444;
+}
+
+.focus\:ring-error-500:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.text-error-600 {
+  color: #dc2626;
+}
+
+/* Primary color utilities */
+.text-primary-600 {
+  color: #8B5CF6;
+}
+
+.hover\:text-primary-500:hover {
+  color: #7C3AED;
+}
+
+/* Dark theme input styles for the black theme */
+.bg-black .input,
+.bg-black .textarea,
+.bg-black .select {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: white;
+}
+
+.bg-black .input:focus,
+.bg-black .textarea:focus,
+.bg-black .select:focus {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+/* Dark theme card styles */
+.bg-black .card {
+  background: #1f2937;
+  border: 1px solid #4b5563;
+}
+
+.bg-black .card-header {
+  border-bottom-color: #4b5563;
+}
