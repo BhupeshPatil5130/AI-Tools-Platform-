@@ -60,7 +60,7 @@ const Profile: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="min-h-screen py-8 px-2 sm:px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -239,10 +239,10 @@ const Profile: React.FC = () => {
               </div>
             </div>
           </motion.div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default Profile; 

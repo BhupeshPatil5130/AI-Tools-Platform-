@@ -312,286 +312,288 @@ const FrontendDeveloper: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white min-h-screen">
-      {/* AI Agent Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-600/20"></div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-8 pb-6">
-          <div className="bg-black/40 backdrop-blur-xl rounded-2xl border border-purple-500/30 p-6 shadow-2xl">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl animate-pulse">
-                  🤖
+    <div className="min-h-screen py-8 px-2 sm:px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* AI Agent Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-600/20"></div>
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-8 pb-6">
+            <div className="bg-black/40 backdrop-blur-xl rounded-2xl border border-purple-500/30 p-6 shadow-2xl">
+              <div className="flex items-center space-x-4">
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl animate-pulse">
+                    🤖
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
                 </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                  AI Frontend Developer Agent
-                </h1>
-                <p className="text-gray-300 text-sm">
-                  Advanced AI-powered frontend code generation with intelligent file structuring
-                </p>
+                <div>
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    AI Frontend Developer Agent
+                  </h1>
+                  <p className="text-gray-300 text-sm">
+                    Advanced AI-powered frontend code generation with intelligent file structuring
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 pb-8">
-        {/* AI Agent Input Panel */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className="bg-black/40 backdrop-blur-xl rounded-2xl border border-purple-500/30 p-6 shadow-2xl">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <span className="text-sm">🎯</span>
-              </div>
-              <h2 className="text-xl font-semibold text-purple-300">Project Configuration</h2>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
-                  Project Description
-                </label>
-                <textarea
-                  id="description"
-                  name="description"
-                  rows={4}
-                  value={formData.description}
-                  onChange={handleChange}
-                  className={`w-full rounded-xl border-2 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 resize-none text-sm px-4 py-3 transition-all duration-300 ${errors.description ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-purple-600/50'}`}
-                  placeholder="Describe your frontend project in detail..."
-                />
-                {errors.description && (
-                  <p className="mt-2 text-sm text-red-400 flex items-center">
-                    <span className="mr-1">⚠️</span>
-                    {errors.description}
-                  </p>
-                )}
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="framework" className="block text-sm font-medium text-gray-300 mb-2">
-                    Framework
-                  </label>
-                  <select
-                    id="framework"
-                    name="framework"
-                    value={formData.framework}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 appearance-none transition-all duration-300 text-sm"
-                  >
-                    {frameworks.map((fw) => (
-                      <option key={fw.value} value={fw.value} className="text-white bg-black">
-                        {fw.icon} {fw.label}
-                      </option>
-                    ))}
-                  </select>
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 pb-8">
+          {/* AI Agent Input Panel */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="bg-black/40 backdrop-blur-xl rounded-2xl border border-purple-500/30 p-6 shadow-2xl">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                  <span className="text-sm">🎯</span>
                 </div>
-
+                <h2 className="text-xl font-semibold text-purple-300">Project Configuration</h2>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="styling" className="block text-sm font-medium text-gray-300 mb-2">
-                    Styling
+                  <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
+                    Project Description
                   </label>
-                  <select
-                    id="styling"
-                    name="styling"
-                    value={formData.styling}
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows={4}
+                    value={formData.description}
                     onChange={handleChange}
-                    className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 appearance-none transition-all duration-300 text-sm"
-                  >
-                    {stylingOptions.map((style) => (
-                      <option key={style.value} value={style.value} className="text-white bg-black">
-                        {style.icon} {style.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="features" className="block text-sm font-medium text-gray-300 mb-2">
-                  Additional Features
-                </label>
-                <input
-                  id="features"
-                  name="features"
-                  type="text"
-                  value={formData.features}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 text-sm transition-all duration-300"
-                  placeholder="e.g., Responsive design, animations, form validation..."
-                />
-              </div>
-
-              <div className="flex space-x-3">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white py-3 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl text-sm font-semibold shadow-lg transition-all duration-300"
-                >
-                  {isLoading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      AI Agent Working...
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2">🚀</span>
-                      Generate Code
-                    </div>
+                    className={`w-full rounded-xl border-2 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 resize-none text-sm px-4 py-3 transition-all duration-300 ${errors.description ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-purple-600/50'}`}
+                    placeholder="Describe your frontend project in detail..."
+                  />
+                  {errors.description && (
+                    <p className="mt-2 text-sm text-red-400 flex items-center">
+                      <span className="mr-1">⚠️</span>
+                      {errors.description}
+                    </p>
                   )}
-                </motion.button>
+                </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="button"
-                  onClick={clearForm}
-                  className="bg-gray-800/50 hover:bg-gray-700/50 text-white py-3 rounded-xl text-sm font-semibold shadow-lg transition-all duration-300 border border-gray-600/50"
-                >
-                  Clear
-                </motion.button>
-              </div>
-            </form>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="framework" className="block text-sm font-medium text-gray-300 mb-2">
+                      Framework
+                    </label>
+                    <select
+                      id="framework"
+                      name="framework"
+                      value={formData.framework}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 appearance-none transition-all duration-300 text-sm"
+                    >
+                      {frameworks.map((fw) => (
+                        <option key={fw.value} value={fw.value} className="text-white bg-black">
+                          {fw.icon} {fw.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-            {/* Sample Projects */}
-            <div className="mt-6">
-              <h3 className="text-sm font-medium text-gray-300 mb-3 flex items-center">
-                <span className="mr-2">💡</span>
-                Quick Start Templates
-              </h3>
-              <div className="grid grid-cols-1 gap-2">
-                {sampleDescriptions.slice(0, 4).map((desc) => (
+                  <div>
+                    <label htmlFor="styling" className="block text-sm font-medium text-gray-300 mb-2">
+                      Styling
+                    </label>
+                    <select
+                      id="styling"
+                      name="styling"
+                      value={formData.styling}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 appearance-none transition-all duration-300 text-sm"
+                    >
+                      {stylingOptions.map((style) => (
+                        <option key={style.value} value={style.value} className="text-white bg-black">
+                          {style.icon} {style.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="features" className="block text-sm font-medium text-gray-300 mb-2">
+                    Additional Features
+                  </label>
+                  <input
+                    id="features"
+                    name="features"
+                    type="text"
+                    value={formData.features}
+                    onChange={handleChange}
+                    className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 text-sm transition-all duration-300"
+                    placeholder="e.g., Responsive design, animations, form validation..."
+                  />
+                </div>
+
+                <div className="flex space-x-3">
                   <motion.button
-                    key={desc}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => setFormData({ ...formData, description: desc })}
-                    className="text-left p-3 text-xs bg-purple-600/20 hover:bg-purple-600/30 text-white rounded-lg transition-all duration-300 border border-purple-600/30 hover:border-purple-500/50"
+                    type="submit"
+                    disabled={isLoading}
+                    className="flex-1 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white py-3 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl text-sm font-semibold shadow-lg transition-all duration-300"
                   >
-                    {desc}
+                    {isLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        AI Agent Working...
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center">
+                        <span className="mr-2">🚀</span>
+                        Generate Code
+                      </div>
+                    )}
                   </motion.button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* AI Agent Code Output */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="bg-black/40 backdrop-blur-xl rounded-2xl border border-purple-500/30 shadow-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-purple-600/20 to-cyan-600/20 p-4 border-b border-purple-500/30">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                  <span className="text-sm">💻</span>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="button"
+                    onClick={clearForm}
+                    className="bg-gray-800/50 hover:bg-gray-700/50 text-white py-3 rounded-xl text-sm font-semibold shadow-lg transition-all duration-300 border border-gray-600/50"
+                  >
+                    Clear
+                  </motion.button>
                 </div>
-                <h2 className="text-xl font-semibold text-purple-300">Generated Code Structure</h2>
+              </form>
+
+              {/* Sample Projects */}
+              <div className="mt-6">
+                <h3 className="text-sm font-medium text-gray-300 mb-3 flex items-center">
+                  <span className="mr-2">💡</span>
+                  Quick Start Templates
+                </h3>
+                <div className="grid grid-cols-1 gap-2">
+                  {sampleDescriptions.slice(0, 4).map((desc) => (
+                    <motion.button
+                      key={desc}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setFormData({ ...formData, description: desc })}
+                      className="text-left p-3 text-xs bg-purple-600/20 hover:bg-purple-600/30 text-white rounded-lg transition-all duration-300 border border-purple-600/30 hover:border-purple-500/50"
+                    >
+                      {desc}
+                    </motion.button>
+                  ))}
+                </div>
               </div>
             </div>
+          </motion.div>
 
-            {isLoading ? (
-              <div className="flex items-center justify-center p-12">
-                <div className="text-center">
-                  <div className="relative">
-                    <div className="w-16 h-16 border-4 border-purple-600/30 border-t-purple-500 rounded-full animate-spin mx-auto mb-4"></div>
-                    <div className="absolute inset-0 w-16 h-16 border-4 border-cyan-600/30 border-t-cyan-500 rounded-full animate-spin mx-auto" style={{ animationDelay: '0.5s' }}></div>
+          {/* AI Agent Code Output */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="bg-black/40 backdrop-blur-xl rounded-2xl border border-purple-500/30 shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-purple-600/20 to-cyan-600/20 p-4 border-b border-purple-500/30">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                    <span className="text-sm">💻</span>
                   </div>
-                  <p className="text-gray-300 text-sm">AI Agent is analyzing and generating your code...</p>
+                  <h2 className="text-xl font-semibold text-purple-300">Generated Code Structure</h2>
                 </div>
               </div>
-            ) : generatedFrontend && codeFiles.length > 0 ? (
-              <div className="h-[600px] flex flex-col">
-                {/* File Tabs */}
-                <div className="bg-gray-900/50 border-b border-purple-500/30 p-2">
-                  <div className="flex space-x-1 overflow-x-auto">
-                    {codeFiles.map((file) => (
+
+              {isLoading ? (
+                <div className="flex items-center justify-center p-12">
+                  <div className="text-center">
+                    <div className="relative">
+                      <div className="w-16 h-16 border-4 border-purple-600/30 border-t-purple-500 rounded-full animate-spin mx-auto mb-4"></div>
+                      <div className="absolute inset-0 w-16 h-16 border-4 border-cyan-600/30 border-t-cyan-500 rounded-full animate-spin mx-auto" style={{ animationDelay: '0.5s' }}></div>
+                    </div>
+                    <p className="text-gray-300 text-sm">AI Agent is analyzing and generating your code...</p>
+                  </div>
+                </div>
+              ) : generatedFrontend && codeFiles.length > 0 ? (
+                <div className="h-[600px] flex flex-col">
+                  {/* File Tabs */}
+                  <div className="bg-gray-900/50 border-b border-purple-500/30 p-2">
+                    <div className="flex space-x-1 overflow-x-auto">
+                      {codeFiles.map((file) => (
+                        <motion.button
+                          key={file.name}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => setActiveFile(file.name)}
+                          className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 whitespace-nowrap flex items-center space-x-2 ${
+                            activeFile === file.name
+                              ? 'bg-purple-600 text-white shadow-lg'
+                              : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                          }`}
+                        >
+                          <span>{typeof getFileIcon(file.name) === 'object' ? JSON.stringify(getFileIcon(file.name)) : getFileIcon(file.name)}</span>
+                          <span>{typeof file.name === 'object' ? JSON.stringify(file.name) : file.name}</span>
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Code Display */}
+                  <div className="flex-1 overflow-hidden">
+                    <div className="flex justify-between items-center p-3 bg-gray-900/30 border-b border-purple-500/20">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm text-gray-300">
+                          {typeof getFileIcon(activeFile) === 'object' ? JSON.stringify(getFileIcon(activeFile)) : getFileIcon(activeFile)} {typeof activeFile === 'object' ? JSON.stringify(activeFile) : activeFile}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          ({typeof getActiveFileLanguage() === 'object' ? JSON.stringify(getActiveFileLanguage()) : getActiveFileLanguage().toUpperCase()})
+                        </span>
+                      </div>
                       <motion.button
-                        key={file.name}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => setActiveFile(file.name)}
-                        className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 whitespace-nowrap flex items-center space-x-2 ${
-                          activeFile === file.name
-                            ? 'bg-purple-600 text-white shadow-lg'
-                            : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
-                        }`}
+                        onClick={() => copyToClipboard(getActiveFileContent())}
+                        className="bg-purple-600 hover:bg-purple-500 text-white text-xs py-1 px-3 rounded-lg transition-colors"
                       >
-                        <span>{typeof getFileIcon(file.name) === 'object' ? JSON.stringify(getFileIcon(file.name)) : getFileIcon(file.name)}</span>
-                        <span>{typeof file.name === 'object' ? JSON.stringify(file.name) : file.name}</span>
+                        📋 Copy
                       </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Code Display */}
-                <div className="flex-1 overflow-hidden">
-                  <div className="flex justify-between items-center p-3 bg-gray-900/30 border-b border-purple-500/20">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-sm text-gray-300">
-                        {typeof getFileIcon(activeFile) === 'object' ? JSON.stringify(getFileIcon(activeFile)) : getFileIcon(activeFile)} {typeof activeFile === 'object' ? JSON.stringify(activeFile) : activeFile}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        ({typeof getActiveFileLanguage() === 'object' ? JSON.stringify(getActiveFileLanguage()) : getActiveFileLanguage().toUpperCase()})
-                      </span>
                     </div>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => copyToClipboard(getActiveFileContent())}
-                      className="bg-purple-600 hover:bg-purple-500 text-white text-xs py-1 px-3 rounded-lg transition-colors"
-                    >
-                      📋 Copy
-                    </motion.button>
-                  </div>
-                  <div className="h-full overflow-auto">
-                    <SyntaxHighlighter
-                      language={typeof getActiveFileLanguage() === 'string' ? getActiveFileLanguage() : 'text'}
-                      style={tomorrow}
-                      customStyle={{
-                        margin: 0,
-                        fontSize: '12px',
-                        lineHeight: '1.4',
-                        background: 'transparent',
-                        color: '#ffffff',
-                        padding: '1rem',
-                      }}
-                      showLineNumbers={true}
-                    >
-                      {typeof getActiveFileContent() === 'object' ? JSON.stringify(getActiveFileContent(), null, 2) : getActiveFileContent()}
-                    </SyntaxHighlighter>
+                    <div className="h-full overflow-auto">
+                      <SyntaxHighlighter
+                        language={typeof getActiveFileLanguage() === 'string' ? getActiveFileLanguage() : 'text'}
+                        style={tomorrow}
+                        customStyle={{
+                          margin: 0,
+                          fontSize: '12px',
+                          lineHeight: '1.4',
+                          background: 'transparent',
+                          color: '#ffffff',
+                          padding: '1rem',
+                        }}
+                        showLineNumbers={true}
+                      >
+                        {typeof getActiveFileContent() === 'object' ? JSON.stringify(getActiveFileContent(), null, 2) : getActiveFileContent()}
+                      </SyntaxHighlighter>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="text-center p-12">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🎨</span>
+              ) : (
+                <div className="text-center p-12">
+                  <div className="w-20 h-20 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl">🎨</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">
+                    Configure your project to generate intelligent frontend code
+                  </p>
                 </div>
-                <p className="text-gray-400 text-sm">
-                  Configure your project to generate intelligent frontend code
-                </p>
-              </div>
-            )}
-          </div>
-        </motion.div>
+              )}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

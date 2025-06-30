@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
       transition={{ duration: 0.6 }}
       className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-purple-500/20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -116,20 +116,6 @@ const Navbar: React.FC = () => {
             </SignInButton>
               </motion.div>
             )}
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-purple-600/20 text-white hover:bg-purple-600/40 transition-all duration-300"
-            >
-              <div className="w-5 h-5 flex flex-col justify-center items-center">
-                <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`}></span>
-                <span className={`block w-4 h-0.5 bg-white mt-1 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-4 h-0.5 bg-white mt-1 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}></span>
-              </div>
-            </motion.button>
           </div>
         </div>
       </div>
@@ -142,9 +128,9 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-black/40 backdrop-blur-xl border-t border-purple-500/20"
+            className="md:hidden bg-black/90 backdrop-blur-xl border-t border-purple-500/20 fixed top-0 left-0 w-full h-full z-50 overflow-y-auto"
           >
-            <div className="px-4 py-4 space-y-2">
+            <div className="px-4 py-8 space-y-4 flex flex-col">
               {navItems.map((item) => (
                 <motion.div
                   key={item.path}
@@ -155,13 +141,13 @@ const Navbar: React.FC = () => {
                   <Link
                     to={item.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-3 ${
+                    className={`block px-6 py-4 rounded-lg text-lg font-semibold transition-all duration-300 flex items-center space-x-3 ${
                       isActive(item.path)
                         ? 'bg-purple-600/80 text-white shadow-lg'
                         : 'text-gray-300 hover:bg-purple-600/20 hover:text-white'
                     }`}
                   >
-                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-xl">{item.icon}</span>
                     <span>{item.label}</span>
                   </Link>
                 </motion.div>

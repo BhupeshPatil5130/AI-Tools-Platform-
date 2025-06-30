@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
@@ -6,6 +6,7 @@ import { useUser } from '@clerk/clerk-react';
 const Dashboard: React.FC = () => {
   const { user } = useUser();
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const sidebarItems = [
     {
@@ -62,17 +63,25 @@ const Dashboard: React.FC = () => {
   const isDashboardHome = location.pathname === '/dashboard';
 
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex flex-col md:flex-row">
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-40 bg-black/60 md:hidden" onClick={() => setSidebarOpen(false)}></div>
+      )}
       {/* Sidebar - Fixed Height, Non-scrollable */}
       <motion.div
         initial={{ x: -300 }}
-        animate={{ x: 0 }}
+        animate={{ x: sidebarOpen || window.innerWidth >= 768 ? 0 : -300 }}
         transition={{ duration: 0.6 }}
-        className="w-64 bg-black/80 backdrop-blur-xl border-r border-purple-500/20 flex-shrink-0 h-screen"
+        className={`w-64 bg-black/80 backdrop-blur-xl border-b md:border-b-0 md:border-r border-purple-500/20 flex-shrink-0 h-screen md:h-auto fixed md:static z-50 md:z-auto
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          md:translate-x-0 md:!block
+          transition-transform duration-300`}
+        style={{ top: 0, left: 0 }}
       >
         <div className="flex flex-col h-full">
           {/* Sidebar Header */}
-          <div className="p-6 border-b border-purple-500/20 flex-shrink-0">
+          <div className="p-4 md:p-6 border-b border-purple-500/20 flex-shrink-0 flex items-center md:block justify-between md:justify-start">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl flex items-center justify-center text-xl">
                 🚀
@@ -82,6 +91,14 @@ const Dashboard: React.FC = () => {
                 <p className="text-xs text-gray-400">Development Suite</p>
               </div>
             </div>
+            {/* Mobile menu close button */}
+            <button
+              className="md:hidden ml-4 p-2 rounded-lg bg-purple-600/20 text-white hover:bg-purple-600/40 transition-all duration-300"
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Close sidebar"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
           </div>
 
           {/* Sidebar Navigation - Fixed, Non-scrollable */}
@@ -124,10 +141,18 @@ const Dashboard: React.FC = () => {
       </motion.div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto pt-16 md:pt-0 flex flex-col">
+        {/* Mobile menu open button */}
+        <button
+          className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-purple-600/20 text-white hover:bg-purple-600/40 transition-all duration-300"
+          onClick={() => setSidebarOpen(true)}
+          aria-label="Open sidebar"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
         {/* Content Area */}
-        <div className="py-8 px-4 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="py-8 px-2 sm:px-4 lg:px-8 flex-1">
+          <div className="h-full w-full">
             {/* Show Dashboard Home Content or Outlet */}
             {isDashboardHome ? (
               <>
