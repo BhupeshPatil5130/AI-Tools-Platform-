@@ -312,11 +312,15 @@ const CodeGenerator: React.FC = () => {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
                         <div>
                           <span className="text-gray-400">Language:</span>
-                          <p className="text-purple-300">{generatedCode.language}</p>
+                          <p className="text-purple-300">
+                            {typeof generatedCode.language === 'object' ? JSON.stringify(generatedCode.language) : generatedCode.language}
+                          </p>
                         </div>
                         <div>
                           <span className="text-gray-400">Problem:</span>
-                          <p className="text-purple-300 truncate">{generatedCode.problemStatement}</p>
+                          <p className="text-purple-300 truncate">
+                            {typeof generatedCode.problemStatement === 'object' ? JSON.stringify(generatedCode.problemStatement) : generatedCode.problemStatement}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -336,7 +340,7 @@ const CodeGenerator: React.FC = () => {
                       </motion.button>
                     </div>
               <SyntaxHighlighter
-                      language={generatedCode.language}
+                      language={typeof generatedCode.language === 'string' ? generatedCode.language : 'text'}
                 style={tomorrow}
                 customStyle={{
                   margin: 0,
@@ -348,7 +352,7 @@ const CodeGenerator: React.FC = () => {
                 }}
                 showLineNumbers={true}
               >
-                      {generatedCode.code}
+                      {typeof generatedCode.code === 'object' ? JSON.stringify(generatedCode.code, null, 2) : generatedCode.code}
               </SyntaxHighlighter>
                   </div>
             </div>

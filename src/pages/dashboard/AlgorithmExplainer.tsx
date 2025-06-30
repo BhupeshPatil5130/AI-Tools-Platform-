@@ -465,7 +465,13 @@ const AlgorithmExplainer: React.FC = () => {
                   <div>
                     <h3 className="font-medium text-purple-400 mb-3 text-sm">📋 Overview</h3>
                     <div className="bg-black/50 p-4 rounded-xl border border-purple-600/50">
-                      <p className="text-gray-300 text-sm leading-relaxed">{explanation.description || 'No description available'}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        {typeof explanation.description === 'object' ? (
+                          <pre>{JSON.stringify(explanation.description, null, 2)}</pre>
+                        ) : (
+                          explanation.description || 'No description available'
+                        )}
+                      </p>
                     </div>
                   </div>
 
@@ -482,7 +488,9 @@ const AlgorithmExplainer: React.FC = () => {
                                 <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                                   {index + 1}
                                 </div>
-                                <p className="text-gray-300 text-sm">{step}</p>
+                                <p className="text-gray-300 text-sm">
+                                  {typeof step === 'object' ? JSON.stringify(step) : step}
+                                </p>
                               </div>
                             ));
                           } else {
@@ -500,7 +508,7 @@ const AlgorithmExplainer: React.FC = () => {
                       <div className="mb-3">
                         <span className="text-xs text-gray-400">Pseudocode:</span>
                         <pre className="bg-black/50 p-3 rounded-lg border border-purple-600/50 text-xs text-gray-300 font-mono overflow-x-auto">
-                          {explanation.pseudocode || 'No pseudocode available'}
+                          {typeof explanation.pseudocode === 'object' ? JSON.stringify(explanation.pseudocode, null, 2) : (explanation.pseudocode || 'No pseudocode available')}
                         </pre>
                       </div>
                     </div>
@@ -514,12 +522,14 @@ const AlgorithmExplainer: React.FC = () => {
                         <div className="text-center p-2 bg-green-600/20 rounded border border-green-600/50">
                           <div className="text-xs text-gray-400">Time Complexity</div>
                           <div className="text-green-300 font-mono text-xs">
-                            {explanation.timeComplexity || 'N/A'}
+                            {typeof explanation.timeComplexity === 'object' ? JSON.stringify(explanation.timeComplexity) : (explanation.timeComplexity || 'N/A')}
                           </div>
                         </div>
                         <div className="text-center p-2 bg-blue-600/20 rounded border border-blue-600/50">
                           <div className="text-xs text-gray-400">Space Complexity</div>
-                          <div className="text-blue-300 font-mono text-sm">{explanation.spaceComplexity || 'N/A'}</div>
+                          <div className="text-blue-300 font-mono text-sm">
+                            {typeof explanation.spaceComplexity === 'object' ? JSON.stringify(explanation.spaceComplexity) : (explanation.spaceComplexity || 'N/A')}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -534,7 +544,9 @@ const AlgorithmExplainer: React.FC = () => {
                           {explanation.useCases.slice(0, 4).map((useCase, index) => (
                             <div key={index} className="flex items-center space-x-2">
                               <span className="text-green-400 text-sm">✓</span>
-                              <span className="text-gray-300 text-sm">{useCase}</span>
+                              <span className="text-gray-300 text-sm">
+                                {typeof useCase === 'object' ? JSON.stringify(useCase) : useCase}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -561,7 +573,9 @@ const AlgorithmExplainer: React.FC = () => {
                           {explanation.advantages && explanation.advantages.slice(0, 3).map((advantage, index) => (
                             <div key={index} className="flex items-center space-x-2">
                               <span className="text-green-400 text-sm">•</span>
-                              <span className="text-gray-300 text-sm">{advantage}</span>
+                              <span className="text-gray-300 text-sm">
+                                {typeof advantage === 'object' ? JSON.stringify(advantage) : advantage}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -574,7 +588,9 @@ const AlgorithmExplainer: React.FC = () => {
                           {explanation.disadvantages && explanation.disadvantages.slice(0, 3).map((disadvantage, index) => (
                             <div key={index} className="flex items-center space-x-2">
                               <span className="text-red-400 text-sm">•</span>
-                              <span className="text-gray-300 text-sm">{disadvantage}</span>
+                              <span className="text-gray-300 text-sm">
+                                {typeof disadvantage === 'object' ? JSON.stringify(disadvantage) : disadvantage}
+                              </span>
                             </div>
                           ))}
                         </div>

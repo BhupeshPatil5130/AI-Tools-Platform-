@@ -358,7 +358,13 @@ const RoadmapGenerater: React.FC = () => {
                   <div>
                     <h3 className="font-medium text-purple-400 mb-3 text-sm">📋 Overview</h3>
                     <div className="bg-black/50 p-4 rounded-xl border border-purple-600/50">
-                      <p className="text-gray-300 text-sm leading-relaxed">{generatedRoadmap.overview}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        {typeof generatedRoadmap.overview === 'object' ? (
+                          <pre>{JSON.stringify(generatedRoadmap.overview, null, 2)}</pre>
+                        ) : (
+                          generatedRoadmap.overview
+                        )}
+                      </p>
                       <div className="mt-3 flex items-center space-x-4 text-xs">
                         <span className="text-purple-300">⏱️ {generatedRoadmap.estimatedDuration}</span>
                         <span className="text-cyan-300">📊 {generatedRoadmap.experienceLevel}</span>
@@ -382,15 +388,27 @@ const RoadmapGenerater: React.FC = () => {
                             <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center text-xs font-bold">
                               {index + 1}
                             </div>
-                            <h4 className="text-white font-medium">{phase.name}</h4>
+                            <h4 className="text-white font-medium">
+                              {typeof phase.name === 'object' ? JSON.stringify(phase.name) : phase.name}
+                            </h4>
                             <span className="text-xs text-cyan-300">⏱️ {phase.duration}</span>
                           </div>
-                          <p className="text-gray-300 text-sm mb-2">{phase.description}</p>
+                          <p className="text-gray-300 text-sm mb-2">
+                            {typeof phase.description === 'object' ? (
+                              <pre>{JSON.stringify(phase.description, null, 2)}</pre>
+                            ) : (
+                              phase.description
+                            )}
+                          </p>
                           <div className="space-y-1">
                             {phase.topics.slice(0, 3).map((topic, topicIndex) => (
                               <div key={topicIndex} className="text-xs text-gray-400 flex items-center">
                                 <span className="mr-2">•</span>
-                                {topic}
+                                {typeof topic === 'object' ? (
+                                  <pre>{JSON.stringify(topic, null, 2)}</pre>
+                                ) : (
+                                  topic
+                                )}
                               </div>
                             ))}
                           </div>
@@ -407,7 +425,11 @@ const RoadmapGenerater: React.FC = () => {
                         <div className="flex flex-wrap gap-2">
                           {generatedRoadmap.tools.slice(0, 6).map((tool, index) => (
                             <span key={index} className="px-2 py-1 bg-purple-600/20 text-purple-300 text-xs rounded border border-purple-600/50">
-                              {tool}
+                              {typeof tool === 'object' ? (
+                                <pre>{JSON.stringify(tool, null, 2)}</pre>
+                              ) : (
+                                tool
+                              )}
                             </span>
                           ))}
                         </div>

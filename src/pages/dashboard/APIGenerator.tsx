@@ -512,7 +512,13 @@ async def ${endpoint.path.replace(/[^a-zA-Z0-9]/g, '_')}(${endpoint.parameters?.
                   <div>
                     <h3 className="font-medium text-purple-400 mb-3 text-sm">📋 Overview</h3>
                     <div className="bg-black/50 p-4 rounded-xl border border-purple-600/50">
-                      <p className="text-gray-300 text-sm leading-relaxed">{generatedAPI.overview}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        {typeof generatedAPI.overview === 'object' ? (
+                          <pre>{JSON.stringify(generatedAPI.overview, null, 2)}</pre>
+                        ) : (
+                          generatedAPI.overview
+                        )}
+                      </p>
                     </div>
                   </div>
 
@@ -549,7 +555,13 @@ async def ${endpoint.path.replace(/[^a-zA-Z0-9]/g, '_')}(${endpoint.parameters?.
                               {expandedEndpoints.has(index) ? '📄' : '💻'}
                             </motion.button>
                           </div>
-                          <p className="text-gray-300 text-sm mb-3">{endpoint.description}</p>
+                          <p className="text-gray-300 text-sm mb-3">
+                            {typeof endpoint.description === 'object' ? (
+                              <pre>{JSON.stringify(endpoint.description, null, 2)}</pre>
+                            ) : (
+                              endpoint.description
+                            )}
+                          </p>
                           
                           {/* Parameters */}
                           {endpoint.parameters && endpoint.parameters.length > 0 && (
@@ -558,9 +570,13 @@ async def ${endpoint.path.replace(/[^a-zA-Z0-9]/g, '_')}(${endpoint.parameters?.
                               <div className="space-y-1">
                                 {endpoint.parameters.map((param, paramIndex) => (
                                   <div key={paramIndex} className="flex items-center justify-between text-xs">
-                                    <span className="text-gray-300">{param.name}</span>
+                                    <span className="text-gray-300">
+                                      {typeof param.name === 'object' ? JSON.stringify(param.name) : param.name}
+                                    </span>
                                     <div className="flex items-center space-x-2">
-                                      <span className="text-purple-300 font-mono">{param.type}</span>
+                                      <span className="text-purple-300 font-mono">
+                                        {typeof param.type === 'object' ? JSON.stringify(param.type) : param.type}
+                                      </span>
                                       {param.required && (
                                         <span className="text-red-400 text-xs">required</span>
                                       )}
@@ -603,12 +619,18 @@ async def ${endpoint.path.replace(/[^a-zA-Z0-9]/g, '_')}(${endpoint.parameters?.
                       <div className="space-y-3">
                         {generatedAPI.models.slice(0, 2).map((model, index) => (
                           <div key={index} className="bg-black/50 p-4 rounded-xl border border-purple-600/50">
-                            <h4 className="text-white font-medium mb-2">{model.name}</h4>
+                            <h4 className="text-white font-medium mb-2">
+                              {typeof model.name === 'object' ? JSON.stringify(model.name) : model.name}
+                            </h4>
                             <div className="space-y-1">
                               {model.fields.slice(0, 4).map((field, fieldIndex) => (
                                 <div key={fieldIndex} className="flex items-center justify-between text-xs">
-                                  <span className="text-gray-300">{field.name}</span>
-                                  <span className="text-purple-300 font-mono">{field.type}</span>
+                                  <span className="text-gray-300">
+                                    {typeof field.name === 'object' ? JSON.stringify(field.name) : field.name}
+                                  </span>
+                                  <span className="text-purple-300 font-mono">
+                                    {typeof field.type === 'object' ? JSON.stringify(field.type) : field.type}
+                                  </span>
                                 </div>
                               ))}
                             </div>
@@ -626,7 +648,11 @@ async def ${endpoint.path.replace(/[^a-zA-Z0-9]/g, '_')}(${endpoint.parameters?.
                         {generatedAPI.setup.installation.slice(0, 3).map((step, index) => (
                           <div key={index} className="flex items-start space-x-2">
                             <span className="text-purple-400 text-sm">•</span>
-                            <span className="text-gray-300 text-sm">{step}</span>
+                            {typeof step === 'object' ? (
+                              <pre>{JSON.stringify(step, null, 2)}</pre>
+                            ) : (
+                              <span className="text-gray-300 text-sm">{step}</span>
+                            )}
                           </div>
                         ))}
                       </div>

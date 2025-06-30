@@ -534,8 +534,8 @@ const FrontendDeveloper: React.FC = () => {
                             : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
                         }`}
                       >
-                        <span>{getFileIcon(file.name)}</span>
-                        <span>{file.name}</span>
+                        <span>{typeof getFileIcon(file.name) === 'object' ? JSON.stringify(getFileIcon(file.name)) : getFileIcon(file.name)}</span>
+                        <span>{typeof file.name === 'object' ? JSON.stringify(file.name) : file.name}</span>
                       </motion.button>
                     ))}
                   </div>
@@ -546,10 +546,10 @@ const FrontendDeveloper: React.FC = () => {
                   <div className="flex justify-between items-center p-3 bg-gray-900/30 border-b border-purple-500/20">
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-gray-300">
-                        {getFileIcon(activeFile)} {activeFile}
+                        {typeof getFileIcon(activeFile) === 'object' ? JSON.stringify(getFileIcon(activeFile)) : getFileIcon(activeFile)} {typeof activeFile === 'object' ? JSON.stringify(activeFile) : activeFile}
                       </span>
                       <span className="text-xs text-gray-500">
-                        ({getActiveFileLanguage().toUpperCase()})
+                        ({typeof getActiveFileLanguage() === 'object' ? JSON.stringify(getActiveFileLanguage()) : getActiveFileLanguage().toUpperCase()})
                       </span>
                     </div>
                     <motion.button
@@ -563,7 +563,7 @@ const FrontendDeveloper: React.FC = () => {
                   </div>
                   <div className="h-full overflow-auto">
                     <SyntaxHighlighter
-                      language={getActiveFileLanguage()}
+                      language={typeof getActiveFileLanguage() === 'string' ? getActiveFileLanguage() : 'text'}
                       style={tomorrow}
                       customStyle={{
                         margin: 0,
@@ -575,7 +575,7 @@ const FrontendDeveloper: React.FC = () => {
                       }}
                       showLineNumbers={true}
                     >
-                      {getActiveFileContent()}
+                      {typeof getActiveFileContent() === 'object' ? JSON.stringify(getActiveFileContent(), null, 2) : getActiveFileContent()}
                     </SyntaxHighlighter>
                   </div>
                 </div>
