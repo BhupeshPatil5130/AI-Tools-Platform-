@@ -503,14 +503,31 @@ const AlgorithmExplainer: React.FC = () => {
 
                   {/* Implementation */}
                   <div>
-                    <h3 className="font-medium text-purple-400 mb-3 text-sm">💻 Implementation</h3>
-                    <div className="bg-black/50 p-4 rounded-xl border border-purple-600/50">
-                      <div className="mb-3">
-                        <span className="text-xs text-gray-400">Pseudocode:</span>
-                        <pre className="bg-black/50 p-3 rounded-lg border border-purple-600/50 text-xs text-gray-300 font-mono overflow-x-auto">
-                          {typeof explanation.pseudocode === 'object' ? JSON.stringify(explanation.pseudocode, null, 2) : (explanation.pseudocode || 'No pseudocode available')}
-                        </pre>
+                    <div className="flex items-center mb-3">
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white text-lg mr-2 shadow-lg">💻</span>
+                      <h3 className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 text-base drop-shadow">Code Structure & Pseudocode</h3>
+                    </div>
+                    <div className="relative bg-gradient-to-br from-black via-purple-900/60 to-cyan-900/60 p-4 rounded-xl border-2 border-purple-500/40 shadow-lg">
+                      <div className="mb-3 flex items-center justify-between">
+                        <span className="text-xs text-purple-200 font-semibold tracking-wide flex items-center gap-1">
+                          <span>📝</span> Pseudocode
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (typeof explanation.pseudocode === 'string') {
+                              navigator.clipboard.writeText(explanation.pseudocode);
+                              toast.success('Pseudocode copied!');
+                            }
+                          }}
+                          className="ml-2 px-3 py-1 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-xs font-semibold shadow hover:from-pink-500 hover:to-purple-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                        >
+                          Copy
+                        </button>
                       </div>
+                      <pre className="bg-black/60 p-3 rounded-lg border border-purple-600/50 text-xs text-purple-100 font-mono overflow-x-auto whitespace-pre-wrap" style={{lineHeight: '1.6'}}>
+                        {typeof explanation.pseudocode === 'object' ? JSON.stringify(explanation.pseudocode, null, 2) : (explanation.pseudocode || 'No pseudocode available')}
+                      </pre>
                     </div>
                   </div>
 
@@ -559,7 +576,11 @@ const AlgorithmExplainer: React.FC = () => {
                     <div>
                       <h3 className="font-medium text-purple-400 mb-3 text-sm">📝 Example</h3>
                       <div className="bg-black/50 p-4 rounded-xl border border-purple-600/50">
-                        <p className="text-gray-300 text-sm">{explanation.example}</p>
+                        <p className="text-gray-300 text-sm">
+                          {typeof explanation.example === 'object'
+                            ? <pre>{JSON.stringify(explanation.example, null, 2)}</pre>
+                            : explanation.example}
+                        </p>
                       </div>
                     </div>
                   )}

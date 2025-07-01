@@ -421,7 +421,7 @@ const FrontendDeveloper: React.FC = () => {
                   </div>
                 </div>
 
-                <div>
+                {/* <div>
                   <label htmlFor="features" className="block text-sm font-medium text-gray-300 mb-2">
                     Additional Features
                   </label>
@@ -434,7 +434,7 @@ const FrontendDeveloper: React.FC = () => {
                     className="w-full rounded-xl border-2 border-purple-600/50 bg-black/50 text-white focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 px-4 py-3 text-sm transition-all duration-300"
                     placeholder="e.g., Responsive design, animations, form validation..."
                   />
-                </div>
+                </div> */}
 
                 <div className="flex space-x-3">
                   <motion.button
